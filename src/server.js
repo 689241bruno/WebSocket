@@ -3,8 +3,10 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => console.log(`rodando na porta ${PORT}`));
+const porta = process.env.PORT || 3000;
+
+const wss = new WebSocketServer({ port: porta });
+console.log(`rodando na porta: ${porta}`);
 
 wss.on("connection", (ws) => {
   ws.on("error", console.error);
